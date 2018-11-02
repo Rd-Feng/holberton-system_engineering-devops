@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# display content in file /etc/passwd
+# only show username, userid, homedir path
+while read i; do echo "$i" | cut -f1,3,6 -d':'; done < /etc/passwd

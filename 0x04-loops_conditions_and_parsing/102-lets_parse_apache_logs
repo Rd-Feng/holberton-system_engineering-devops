@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# display IP address and HTTP status code from an apache log file
+IFS=$'\n'
+while read -r entry
+do
+    ipaddr=$(echo "$entry" | cut -f1 -d' ')
+    req=$(echo "$entry" | cut -f9 -d' ')
+    echo "$ipaddr $req"
+done < apache-access.log
