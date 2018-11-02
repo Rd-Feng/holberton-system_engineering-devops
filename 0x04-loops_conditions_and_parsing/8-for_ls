@@ -5,5 +5,5 @@
 L="$(ls)"
 for f in $L
 do
-    echo "$f" | cut -f2- -d"-"
+    echo "$f" | cut -f2 -d"-"
 done
