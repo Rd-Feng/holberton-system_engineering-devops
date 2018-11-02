@@ -3,6 +3,8 @@
 # in a list format
 # where only the part of the name after the first dash
 L="$(ls)"
+IFS='
+'
 for f in $L
 do
     echo "$f" | cut -f2- -d"-"
