@@ -2,15 +2,9 @@
 # group by IP address and status code
 #temp=$(awk 'BEGIN {FS=" "} {print $1, $9} END{}' apache-access.log)
 awk '
-BEGIN {
-FS=" "
-}
-{
-a[$1" "$9] += 1
-}
+BEGIN {FS=" "}
+{a[$1" "$9] += 1}
 END {
 for (i in a) {
-    printf " %3d %s\n", a[i], i| "sort -nr"
-}
-}
-' apache-access.log
+printf " %3d %s\n", a[i], i| "sort -nr"
+}}' apache-access.log
