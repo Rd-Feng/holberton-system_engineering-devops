@@ -3,5 +3,5 @@
 IFS=$'\n'
 while read -r entry
 do
-    echo $(echo $entry | awk -F' ' '{print $1, $9}')
+    echo "$entry" | awk -F' ' '{print $1, $9}'
 done < apache-access.log
