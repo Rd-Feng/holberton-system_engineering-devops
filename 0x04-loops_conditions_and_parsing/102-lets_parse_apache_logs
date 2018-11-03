@@ -3,7 +3,5 @@
 IFS=$'\n'
 while read -r entry
 do
-    ipaddr=$(echo "$entry" | cut -f1 -d' ')
-    req=$(echo "$entry" | cut -f9 -d' ')
-    echo "$ipaddr $req"
+    echo $(echo $entry | awk -F' ' '{print $1, $9}')
 done < apache-access.log
