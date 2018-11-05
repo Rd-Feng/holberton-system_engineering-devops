@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# kill process run by script 7-highlander
+# this script shall fail for the target has a trap for SIGTERM
+pkill -f 7-highlander
