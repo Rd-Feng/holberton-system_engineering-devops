@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-ping -c 5 $@
+# ping a host 5 times
+ping -c 5 "$@"
