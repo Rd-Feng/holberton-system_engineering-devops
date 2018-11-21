@@ -10,4 +10,5 @@ then
 else
     sed -i '/[\d.]*[ \t]*facebook[.]com/c\8.8.8.8 facebook.com' ~/hosts.new
 fi
-mv -f ~/hosts.new /etc/hosts
+cp -f ~/hosts.new /etc/hosts
+rm -f ~/hosts.new
