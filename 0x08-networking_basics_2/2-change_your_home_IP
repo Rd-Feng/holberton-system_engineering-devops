@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# change localhost ip to 127.0.0.2
+# change facebook ip tp 8.8.8.8
 cp /etc/hosts ~/temp
 sed -i '/[\d.]*[ \t]localhost/c\127.0.0.2 localhost' ~/temp
 s="$(sed -n '/.*facebook[.]com.*/p' ~/temp)"
