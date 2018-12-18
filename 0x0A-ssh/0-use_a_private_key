@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-ssh -i ~/.ssh/holberton ubuntu@35.243.129.47
+ssh -i ~/.ssh/holberton -o "StrictHostKeyChecking no" ubuntu@35.243.129.47
