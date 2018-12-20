@@ -14,4 +14,4 @@ if [ "$num" -eq 0 ]
 then
 	sed -i '/^\tserver_name/ a\\n\terror_page 404 /custom_404.html;\n' /etc/nginx/sites-enabled/default
 fi
-service nginx reload
+service nginx restart
