@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# install nginx server and customize http return header
+apt-get update -y
+apt-get upgrade -y
+apt-get install nginx -y
+sed -i '/^\tserver_name/ a\\tadd_header X-Served-By'" $HOSTNAME;" /etc/nginx/sites-available/default
+/etc/init.d/nginx reload
