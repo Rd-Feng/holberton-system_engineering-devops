@@ -17,4 +17,4 @@ then
 	sed -i '/^\tserver_name/ a\\n\terror_page 404 /custom_404.html;\n' /etc/nginx/sites-available/default
 fi
 sed -i '/^\tserver_name/ a\\tadd_header X-Served-By'" $HOSTNAME;" /etc/nginx/sites-available/default
-/etc/init.d/nginx reload
+/etc/init.d/nginx restart
