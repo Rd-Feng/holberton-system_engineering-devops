@@ -17,6 +17,8 @@ global
 	#  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
 	ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
 	ssl-default-bind-options no-sslv3
+	maxconn 2048
+	tune.ssl.default-dh-param 2048
 
 defaults
 	log	global
@@ -33,18 +35,22 @@ defaults
 	errorfile 502 /etc/haproxy/errors/502.http
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
+	option forwardfor
+	option http-server-close
 
 frontend http_front
 	bind *:80
-	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-	use_backend letsencrypt-backend if letsencrypt-acl
 	default_backend http_back
 
-frontend ssl_front
-	bind *:443 ssl crt /etc/haproxy/certs/raymondlf266.online.pem
-	default_backend http_back
+frontend www-https
+   	bind *:443 ssl crt /etc/haproxy/certs/raymondlf266.online.pem
+  	reqadd X-Forwarded-Proto:\ https
+   	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+   	use_backend letsencrypt-backend if letsencrypt-acl
+   	default_backend http_back
 
 backend http_back
+   	redirect scheme https if !{ ssl_fc }
 	balance roundrobin
 	server 394-web-01 35.231.156.161:80 check
 	server 393-web-02 34.73.64.44:80 check
