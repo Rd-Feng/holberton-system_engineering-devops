@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# backup mysql database
+name=$(date '+%d-%m-%Y')
+if [ -z "$1" ]
+then
+    echo 'Usage: ./1-mysql_backup <root password>'
+    exit 1
+fi
+mysqldump -u root -p"$1"  --all-databases > "$name"".sql" &&
+tar -cvzf "$name"".tar.gz" "$name"".sql" && rm "$name"".sql"
