@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Fetch employee todos info and export into json format
 """
-import requests
 import json
+import requests
 from sys import argv
 
 

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Fetch all employees todos info and export into json format
 """
-import requests
 import json
+import requests
 from sys import argv
 
 
@@ -11,9 +11,9 @@ if __name__ == "__main__":
     d = {}
     for user in users:
         tasks = requests.get(
-                             "https://jsonplaceholder.typicode.com/todos?userId={}"
-                             .format(user.get('id'))
-                            ).json()
+            "https://jsonplaceholder.typicode.com/todos?userId={}"
+            .format(user.get('id'))
+        ).json()
         d[user.get('id')] = [{
             "username": user.get('username'),
             "task": task.get('title'),

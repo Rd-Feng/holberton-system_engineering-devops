@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Fetch employee todos info and export into csv format
 """
-import requests
 import csv
+import requests
 from sys import argv
 
 
@@ -19,7 +19,8 @@ if __name__ == "__main__":
     else:
         username = user.get('username')
     all = requests.get(
-                     "https://jsonplaceholder.typicode.com/todos?userId={}"
+                     "https://jsonplaceholder.typicode.com/\
+                     todos?userId={}"
                      .format(argv[1])
                     ).json()
     with open('{}.csv'.format(argv[1]), 'w') as f:
