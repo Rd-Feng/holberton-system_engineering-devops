@@ -39,4 +39,5 @@ def count_words(subreddit, word_list, after=None, d=None):
         res = [(k, v) for k, v in d.items()]
         res.sort(key=lambda x: x[1], reverse=True)
         for r in res:
-            print("{}: {}".format(r[0], r[1]))
+            if r[1] > 0:
+                print("{}: {}".format(r[0], r[1]))
