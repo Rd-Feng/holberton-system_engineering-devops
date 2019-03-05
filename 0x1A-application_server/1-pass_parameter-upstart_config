@@ -8,4 +8,4 @@ setuid ubuntu
 setgid www-data
 
 chdir /home/ubuntu/AirBnB_clone_v2/web_flask
-exec gunicorn -w 3 --bind localhost:8000 0-hello_route:app
+exec gunicorn -w 3 --bind localhost:8001 6-number_odd_or_even:app
